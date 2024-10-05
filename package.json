@@ -1,0 +1,23 @@
+{
+  "name": "bun-plugin-vue3",
+  "version": "0.0.1",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0",
+    "vue": "^3.5.11"
+  },
+  "author": "qhariN",
+  "license": "MIT",
+  "repository": "github:qhariN/bun-plugin-vue",
+  "keywords": [
+    "bun",
+    "plugin",
+    "vue",
+    "vue3",
+    "sfc"
+  ]
+}
