@@ -41,14 +41,7 @@ export function pluginVue3(): BunPlugin {
         }
       })
 
-      build.onResolve({ filter: /\.vue\?type=template/ }, args => {
-        return {
-          path: args.path,
-          namespace: 'vue-template'
-        }
-      })
-
-      build.onLoad({ filter: /.*/, namespace: 'vue-template' }, args => {
+      build.onLoad({ filter: /\.vue\?type=template/ }, args => {
         const [filename, dirname] = resolvePath(args.path)
         const { code, errors } = resolveTemplate(
           filename,
@@ -58,7 +51,8 @@ export function pluginVue3(): BunPlugin {
         return {
           contents: code,
           errors,
-          resolveDir: dirname
+          resolveDir: dirname,
+          loader: 'tsx',
         }
       })
 

@@ -24,6 +24,7 @@ export function resolveScript(
     const res = compileScript(descriptor, {
       id: scopeId,
       isProd,
+      inlineTemplate: true,
       templateOptions: descriptor.template ? getTemplateOptions(descriptor, templateOptions, isProd) : {},
       fs: ts.sys
     })
