@@ -1,33 +1,39 @@
 import { getDesCache, getId } from './cache'
-import { compileTemplate, type SFCDescriptor, type SFCTemplateCompileOptions } from 'vue/compiler-sfc'
+import {
+  compileTemplate,
+  type SFCDescriptor,
+  type SFCTemplateCompileOptions,
+} from 'vue/compiler-sfc'
 
-export function resolveTemplate(filename: string, options: any['templateOptions'] = {}, isProd: boolean) {
+export function resolveTemplate(
+  filename: string,
+  options: any['templateOptions'] = {},
+  isProd: boolean,
+) {
   const descriptor = getDesCache(filename)
-
-  let { code, errors, map } = compileTemplate(getTemplateOptions(descriptor, options, isProd))
-
-  const convertedErrors: any[] = errors.map(e => {
+  const { code, errors } = compileTemplate(getTemplateOptions(descriptor, options, isProd))
+  const convertedErrors: any[] = errors.map((e) => {
     if (typeof e === 'string') {
       return {
-        text: e
+        text: e,
       }
     } else {
       return {
-        text: e.message
+        text: e.message,
       }
     }
   })
 
   return {
     code,
-    errors: convertedErrors
+    errors: convertedErrors,
   }
 }
 
 export function getTemplateOptions(
   descriptor: SFCDescriptor,
   options: any['templateOptions'],
-  isProd: boolean
+  isProd: boolean,
 ): SFCTemplateCompileOptions {
   const filename = descriptor.filename
   const scopeId = getId(filename)
@@ -35,7 +41,7 @@ export function getTemplateOptions(
     source: descriptor.template!.content,
     filename,
     id: scopeId,
-    scoped: descriptor.styles.some(s => s.scoped),
+    scoped: descriptor.styles.some((s) => s.scoped),
     isProd,
     inMap: descriptor.template!.map,
     compiler: options?.compiler,
@@ -43,8 +49,8 @@ export function getTemplateOptions(
     preprocessOptions: options?.preprocessOptions,
     compilerOptions: {
       ...options?.compilerOptions,
-      scopeId
+      scopeId,
     },
-    transformAssetUrls: options?.transformAssetUrls
+    transformAssetUrls: options?.transformAssetUrls,
   }
 }

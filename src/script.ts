@@ -11,34 +11,37 @@ export function resolveScript(
 ) {
   const descriptor = getDesCache(filename)
   const error: any[] = []
+  let warnings: any[] = []
   const { script, scriptSetup } = descriptor
   const isTs = (script && script.lang === 'ts') || (scriptSetup && scriptSetup.lang === 'ts')
-
   let code = 'export default {}'
+
   if (!descriptor.script && !descriptor.scriptSetup) {
     return { code }
   }
-
   const scopeId = getId(filename)
+
   try {
     const res = compileScript(descriptor, {
+      ...scriptOptions,
       id: scopeId,
       isProd,
       inlineTemplate: true,
-      templateOptions: descriptor.template ? getTemplateOptions(descriptor, templateOptions, isProd) : {},
+      templateOptions: descriptor.template ? getTemplateOptions(descriptor, templateOptions, isProd) : undefined,
       fs: ts.sys
     })
     code = res.content
+    warnings = res.warnings!
   } catch (e: any) {
     error.push({
       text: e.message
     })
   }
-  console.log('code ->', code)
 
   return {
     code,
     error,
+    warnings,
     isTs
   }
 }
