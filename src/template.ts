@@ -1,4 +1,4 @@
-import { getDesCache, getId } from './cache'
+import { getDesCache, getId } from './cache.ts'
 import {
   compileTemplate,
   type SFCDescriptor,

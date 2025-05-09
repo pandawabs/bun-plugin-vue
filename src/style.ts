@@ -1,5 +1,5 @@
 import { compileStyleAsync, type SFCStyleCompileOptions } from 'vue/compiler-sfc'
-import { getDesCache, getId } from './cache'
+import { getDesCache, getId } from './cache.ts'
 
 export async function resolveStyle(
   filename: string,

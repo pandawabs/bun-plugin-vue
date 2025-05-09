@@ -1,11 +1,11 @@
-import type { BunPlugin } from 'bun'
-import { getId } from './cache'
-import { resolvePath, validateDependency, buildJsModule } from './util'
-import { loadEntry } from './entry'
-import { resolveScript } from './script'
-import { resolveTemplate } from './template'
-import { resolveStyle } from './style'
-import { parse as parseQuery } from 'querystring'
+import { type BunPlugin } from 'bun'
+import { getId } from './cache.ts'
+import { resolvePath, validateDependency, buildJsModule } from './util.ts'
+import { loadEntry } from './entry.ts'
+import { resolveScript } from './script.ts'
+import { resolveTemplate } from './template.ts'
+import { resolveStyle } from './style.ts'
+import { parse as parseQuery } from 'node:querystring'
 
 validateDependency()
 
@@ -15,13 +15,14 @@ interface VueLoaderOptions {
   styleOptions?: {}
 }
 
-const vueLoader = ({
+export const vueLoader = ({
   scriptOptions,
   templateOptions,
   styleOptions,
 }: VueLoaderOptions = {}): BunPlugin => ({
   name: 'vueLoader',
-  setup(build) {
+  target: 'browser',
+  async setup(build) {
     const isProd = process.env.NODE_ENV === 'production'
 
     build.onLoad({ filter: /\.vue$/ }, async (args) => {
@@ -126,4 +127,4 @@ const vueLoader = ({
     })
   },
 })
-export default vueLoader
+export default vueLoader()

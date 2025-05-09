@@ -1,6 +1,6 @@
 import { compileScript } from '@vue/compiler-sfc'
-import { getDesCache, getId } from './cache'
-import { getTemplateOptions } from './template'
+import { getDesCache, getId } from './cache.ts'
+import { getTemplateOptions } from './template.ts'
 import ts from 'typescript'
 
 export function resolveScript(

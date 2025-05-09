@@ -1,6 +1,6 @@
 import { parse } from '@vue/compiler-sfc'
-import { setDesCache } from './cache'
-import { setId } from './cache'
+import { setDesCache } from './cache.ts'
+import { setId } from './cache.ts'
 
 export function loadEntry(source: string, filename: string) {
   const { descriptor, errors } = parse(source, { filename })
