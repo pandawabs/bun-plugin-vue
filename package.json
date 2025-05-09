@@ -20,20 +20,28 @@
     "loading"
   ],
   "files": [
-      "/dist"
+    "./dist"
   ],
-  "main": "dist/index.js",
   "scripts": {
-    "build": "bun build ./src/index.ts --outdir ./dist --target bun",
+    "publish": "bun build ./src/index.ts --outdir ./dist --target bun --external vue/compiler-sfc --external @vue/compiler-sfc --minify --format esm",
+    "build": "bun build ./src/index.ts --outdir ./dist --target bun --external vue/compiler-sfc --external @vue/compiler-sfc --sourcemap=external --format esm",
     "dev": "pnpm run build -- --watch"
   },
-  "dependencies": {
-    "vue": ">=3.0.0"
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
   },
   "devDependencies": {
     "@types/bun": "latest",
     "@tsconfig/bun": "^1.0.7",
-    "vue-tsc": ">=2.0.0",
-    "typescript": "^5.0.0"
+    "@vue/tsconfig": "^0.7.0",
+    "vue-tsc": ">=2.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0",
+    "vue": "^3.0.0"
   }
 }

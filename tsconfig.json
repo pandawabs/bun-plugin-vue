@@ -8,15 +8,14 @@
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
     "moduleDetection": "force",
-    "jsx": "preserve",
-    "jsxImportSource": "vue",
     "allowJs": true,
+    "resolveJsonModule": true,
     "isolatedModules": true,
 
     // Bundler mode
-    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "verbatimModuleSyntax": true,
