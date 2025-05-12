@@ -23,8 +23,8 @@
     "./dist"
   ],
   "scripts": {
-    "publish": "bun build ./src/index.ts --outdir ./dist --target bun --external vue/compiler-sfc --external @vue/compiler-sfc --minify --format esm",
-    "build": "bun build ./src/index.ts --outdir ./dist --target bun --external vue/compiler-sfc --external @vue/compiler-sfc --sourcemap=external --format esm",
+    "publish": "bun build ./src/index.ts --outdir ./dist --target bun --external vue/compiler-sfc --external @vue/compiler-sfc --external typescript --minify --sourcemap=linked",
+    "build": "bun build ./src/index.ts --outdir ./dist --target bun --external vue/compiler-sfc --external @vue/compiler-sfc --external typescript --sourcemap=linked",
     "dev": "pnpm run build -- --watch"
   },
   "main": "./dist/index.js",
