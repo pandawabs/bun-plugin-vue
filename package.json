@@ -1,27 +1,47 @@
 {
-  "name": "bun-plugin-vue3",
-  "description": "a Bun plugin for Vue 3",
-  "version": "1.0.0-alpha.3",
-  "module": "src/index.ts",
+  "name": "bun-plugin-vue",
+  "description": "Bun plugin for loading Vue files",
+  "version": "0.0.1",
   "type": "module",
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0",
-    "vue": ">=3.0.0"
-  },
-  "author": "qhariN",
+  "author": "pandawabs",
   "license": "MIT",
-  "homepage": "https://github.com/qhariN/bun-plugin-vue#readme",
-  "bugs": "https://github.com/qhariN/bun-plugin-vue/issues",
+  "homepage": "https://github.com/pandawabs/bun-plugin-vue#readme",
+  "bugs": "https://github.com/pandawabs/bun-plugin-vue/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qhariN/bun-plugin-vue.git"
+    "url": "git+https://github.com/pandawabs/bun-plugin-vue.git"
   },
   "keywords": [
     "bun",
     "plugin",
-    "vue"
-  ]
+    "vue",
+    "vue3",
+    "loader",
+    "loading"
+  ],
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "publish": "bun build ./src/index.ts --outdir ./dist --target bun --external vue/compiler-sfc --external @vue/compiler-sfc --external typescript --minify --sourcemap=linked",
+    "build": "bun build ./src/index.ts --outdir ./dist --target bun --external vue/compiler-sfc --external @vue/compiler-sfc --external typescript --sourcemap=linked",
+    "dev": "pnpm run build -- --watch"
+  },
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@tsconfig/bun": "^1.0.7",
+    "@vue/tsconfig": "^0.7.0",
+    "vue-tsc": ">=2.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0",
+    "vue": "^3.0.0"
+  }
 }
