@@ -1,12 +1,14 @@
 {
-  "name": "bun-plugin-vue",
+  "name": "@pandawabs/bun-plugin-vue",
   "description": "Bun plugin for loading Vue files",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "author": "pandawabs",
   "license": "MIT",
   "homepage": "https://github.com/pandawabs/bun-plugin-vue#readme",
-  "bugs": "https://github.com/pandawabs/bun-plugin-vue/issues",
+  "bugs": {
+    "url": "https://github.com/pandawabs/bun-plugin-vue/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pandawabs/bun-plugin-vue.git"

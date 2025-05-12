@@ -7,7 +7,7 @@
 </p>
 
 ```bash
-bun i -D bun-plugin-vue
+bun install -D @pandawabs/bun-plugin-vue
 ```
 
 ## About
@@ -17,7 +17,7 @@ This project forked from [jh0rman/bun-plugin-vue](https://github.com/jh0rman/bun
 Basic usage for `Bun.build`:
 
 ```js
-import vueLoader from 'bun-plugin-vue';
+import vueLoader from '@pandawabs/bun-plugin-vue';
 
 await Bun.build({
     // ...
@@ -32,7 +32,7 @@ You can add in `bunfig.toml` for `Bun.serve`
 ```toml
 [serve.static]
 plugins = [
-  "bun-plugin-vue"
+  "@pandawabs/bun-plugin-vue"
 ]
 ```
 
